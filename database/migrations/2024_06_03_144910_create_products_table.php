@@ -17,11 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->string('brand');
             $table->text('description');
             $table->string('thumb');
             $table->decimal('price',8,2)->default(0);
-            $table->string('original_country')->default('IT');
             $table->boolean('available')->default(false);
             $table->timestamps();
         });
