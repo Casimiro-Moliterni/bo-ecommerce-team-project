@@ -20,11 +20,11 @@ class ProductsTableSeeder extends Seeder
         for($i=0; $i < 10 ; $i ++){
             $newProduct= new Product();
             $newProduct->name=$faker->name();
-            $newProduct->brand=$faker->company();
             $newProduct->slug=Str::slug($newProduct->name, '-');
             $newProduct->description=$faker->text(300);
             $newProduct->thumb='https://picsum.photos/200/300';
             $newProduct->price=$faker->randomFloat(1, 1, 999);
+            $newProduct->available= $faker->boolean();
             $newProduct->save();
          }
     }
