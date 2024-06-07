@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Admin\ProjectsController;
+use App\Http\Controllers\Admin\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +23,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::resource('projects',ProjectsController::class)->parameter(['projects' => 'project:slug']);
+Route::resource('admin',ProductsController::class)->parameters(['products' => 'product:slug']);
 
 
 Route::middleware('auth')->group(function () {
