@@ -23,8 +23,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('admin',ProductsController::class)->parameters(['products' => 'product:slug']);
-
+Route::middleware(['auth','verified'])
+->name('admin.')
+->prefix('admin')
+->group(function(){
+Route::resource('products',ProductsController::class)->parameters(['products' => 'product:slug']);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
